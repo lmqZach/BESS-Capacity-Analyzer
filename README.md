@@ -1,11 +1,70 @@
-from pathlib import Path
+# 🔋 BESS Capacity Analyzer
 
-# Load the existing README.txt template
-readme_path = Path("/mnt/data/README.txt")
-existing_readme = readme_path.read_text()
+A Streamlit-based diagnostic app for analyzing SCADA data from Battery Energy Storage Systems (BESS), automating performance metrics like RTE and % Guaranteed Energy. Built for engineering-grade accuracy, it enables data parsing, visualization, and deterministic report generation for Samsung E4L, Tesla MegaPack, and Sungrow PowerTitan.
 
-# New HMI section
-hmi_section = """
+---
+
+## 📌 Overview
+
+**Author:** Zach (Muqing) Li  
+**Title:** Performance Engineer  
+**Division:** Engineering Solutions & Standard, EPC, The AES Corporation
+
+This tool processes and analyzes SCADA trending data from commissioned BESS sites. It enables:
+- File upload of raw capacity test data
+- Parsing and preprocessing of SCADA time-series
+- Filtering invalid readings and filling missing data using forward fill strategy
+- Interactive visualization of key metrics (Energy, Power, SOC, Temperature)
+- Automatic performance analysis with deterministic metric calculations (RTE, % Guaranteed Energy, etc.)
+- Summary report generation per power block and full plant view
+- Exportable Excel reports for warranty review and performance documentation
+
+---
+
+## 📊 Methodology
+
+1. **Raw Data Structure**  
+   Raw Excel file with multi-indexed BMS channel readings like `BMS.1.A.2.1.N1 Charge Amount of Energy (kWh)`
+
+2. **Parsing and Grouping**  
+   Automatically identifies AMPS and Power Blocks from column patterns
+
+3. **Data Processing**  
+   Forward fills missing data, selects only relevant columns (kWh, SOC, Temp, etc.)
+
+4. **Summary Metric Calculation**  
+   Calculates energy charged, discharged, % of guaranteed energy delivered, RTE, and PASS/FAIL logic
+
+5. **Visualization and Export**  
+   Streamlit HMI interface visualizes trends and enables Excel report download
+
+---
+
+## 🚀 Usage Instructions
+
+1. Clone or download the repository  
+2. Install dependencies with:
+   ```
+   pip install -r requirements.txt
+   ```
+3. Launch the app:
+   ```
+   streamlit run app.py
+   ```
+
+---
+
+## 📦 Requirements
+
+- Python 3.8+
+- `streamlit`
+- `pandas`
+- `openpyxl`
+- `plotly`
+- `xlsxwriter`
+
+---
+
 ## 🖥️ HMI Interface Walkthrough
 
 This section introduces the **Streamlit-based Human-Machine Interface (HMI)** of the BESS Capacity Analyzer. The app has a clean, professional layout and walks users through four stages:
@@ -71,13 +130,3 @@ Once visualization is complete, users can:
   - Round Trip Efficiency (RTE)
   - Pass/Fail status
 - Export this data into a formatted Excel file for further review, documentation, or reporting
-"""
-
-# Append the HMI section to the README content
-updated_readme = existing_readme.strip() + "\n\n" + hmi_section.strip()
-
-# Save the updated README
-updated_readme_path = Path("/mnt/data/README_updated.txt")
-updated_readme_path.write_text(updated_readme)
-
-updated_readme_path.name
