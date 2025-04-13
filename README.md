@@ -7,8 +7,6 @@ A Streamlit-based diagnostic app for analyzing SCADA data from Battery Energy St
 ## 📌 Overview
 
 **Author:** Zach (Muqing) Li  
-**Title:** Performance Engineer  
-**Division:** Engineering Solutions & Standard, EPC, The AES Corporation
 
 This tool processes and analyzes SCADA trending data from commissioned BESS sites. It enables:
 - File upload of raw capacity test data
@@ -73,7 +71,8 @@ This section introduces the **Streamlit-based Human-Machine Interface (HMI)** of
 
 ### 📁 Stage 1: File Input & Project Setup
 
-**Image:** `HMI/main_interface.png`
+![main_interface](https://github.com/user-attachments/assets/ba3860e4-32b1-4884-81d8-256321459bba)
+
 
 At the start of the application, users are presented with a configuration interface to specify:
 - Project Name
@@ -87,7 +86,8 @@ After inputting project details, users upload a raw Excel file containing SCADA 
 
 ### 🧠 Stage 2: Equipment Auto Detection
 
-**Image:** `HMI/equipment_detection.png`
+![equipment_detection](https://github.com/user-attachments/assets/eb976329-8da8-4a88-ba05-0df7cc34b428)
+
 
 Upon file upload, the application parses the Excel sheet and detects:
 - All AMPS IDs present in the dataset
@@ -100,7 +100,8 @@ The interface displays a summary table and dropdowns to let users select a speci
 
 ### 📊 Stage 3: Interactive Visualization
 
-**Image:** `HMI/integent visualization.png`
+![integent visualization](https://github.com/user-attachments/assets/9964f269-680e-43c4-a3c0-ec1848c6aa8f)
+
 
 This is the core analytical dashboard. It features an **interactive, dual-axis Plotly graph** that:
 - Shows **Energy (kWh)** on the left y-axis
@@ -119,7 +120,8 @@ Users can explore dynamic battery behavior over time and correlate SOC drop with
 
 ### 📥 Stage 4: Output Summary & Downloads
 
-**Image:** `HMI/output_options.png`
+![output_options](https://github.com/user-attachments/assets/f13fcf70-efad-499b-88d2-1d6bb39a5560)
+
 
 Once visualization is complete, users can:
 - Generate a **per-PCS summary table**
